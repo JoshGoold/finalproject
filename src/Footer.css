@@ -1,0 +1,39 @@
+.footer .main{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    
+}
+.footer {
+    margin-top: 100px;
+}
+
+.footer .main .links ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 14px;
+    gap: 10px;
+    font-weight: 200;
+    margin-left: -25%;
+}
+.footer .main .logo img{
+    height: 200px;
+    width: 200px;
+}
+.footer .main .socials ul{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 200;
+}
+.footer .extra{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 200;
+}
