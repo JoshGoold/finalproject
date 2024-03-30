@@ -125,9 +125,9 @@ function Home(){
                 <button className={light ? 'lm' : 'dm'} onClick={handleSweaters}>Sweaters</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handlePants}>Pants</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handleShoes}>Shoes</button>
-                
+                <button className={light ? 'lm' : 'dm'} onClick={handleMode}>{modeText}</button>
                 <div className="fix">
-                    <button className={light ? 'lm' : 'dm'} onClick={handleMode}>{modeText}</button>
+                    
                 <button id="end" className={light ? 'lm' : 'dm'}  onClick={handleLogout}>Logout</button>
                 <button onClick={handleSidePanel} className="exit">❌</button>
                 </div>

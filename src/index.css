@@ -48,7 +48,7 @@ html{
     flex-direction: column;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
-    width: 150px;
+    width: 200px;
     gap: 2px;
     padding: 2px;
     position: sticky;
@@ -57,7 +57,8 @@ html{
 .page .side-panel button{
     padding: 10px;
     font-family: Poppins;
-    font-weight: 300;
+    font-weight: 200;
+    font-size: 1.125em;
     width: 100%;
     border: none;
     transition: 0.2s ease-in-out all;
@@ -91,7 +92,8 @@ html{
 .page .side-panel img{
     height: 80px;
     object-fit: cover;
-    
+    padding: 20px;
+    background-color: hsla(0, 0%, 100%, 0.8);
 }
 .page .page-body .head{
     display: flex;
