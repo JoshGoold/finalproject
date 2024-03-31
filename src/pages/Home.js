@@ -12,6 +12,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import Default from '../assets/default.webp';
 import AboutUs from "./AboutUs.js";
 import Contact from "./Contact.js";
+import CS from "../CS.js";
 
 function Home(){
     const [showSidePanel, setShowSidePanel] = useState(true);
@@ -51,21 +52,21 @@ function Home(){
             
         }).catch(err => console.log(err))
     }
-    // useEffect(() => {
-    //     // Fetch the username from the server
-    //     axios.get('http://localhost:4100')
-    //         .then(response => {
-    //             if(response.data.valid){
-    //                 setUsername(response.data.username)
-    //             } else {
-    //                 //if not logged into any account automatically redirects you to login
-    //                 nav("/login");
-    //             }
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching username:', error);
-    //         });
-    // }, []);
+    useEffect(() => {
+        // Fetch the username from the server
+        axios.get('http://localhost:4100')
+            .then(response => {
+                if(response.data.valid){
+                    setUsername(response.data.username)
+                } else {
+                    //if not logged into any account automatically redirects you to login
+                    nav("/login");
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching username:', error);
+            });
+    }, []);
 
    
     //variables for naviagtion handling
@@ -76,10 +77,22 @@ function Home(){
     const [shoe,setShoe] = useState(false)
     const [aboutUs, setAboutUs] = useState(false)
     const [contact, setContact] = useState(false)
+    const [cs, setCs] = useState(false)
 
     //home navigation handling
     const handleHome =()=>{
         setHome(true)
+        setPant(false)
+        setShirt(false)
+        setShoe(false)
+        setCs(false)
+        setSweater(false)
+        setAboutUs(false)
+        setContact(false)
+    }
+    const handleCs =()=>{
+        setHome(false)
+        setCs(true)
         setPant(false)
         setShirt(false)
         setShoe(false)
@@ -93,6 +106,7 @@ function Home(){
         setShirt(false)
         setShoe(false)
         setSweater(true)
+        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
@@ -101,6 +115,7 @@ function Home(){
         setPant(false)
         setShirt(true)
         setShoe(false)
+        setCs(false)
         setSweater(false)
         setAboutUs(false)
         setContact(false)
@@ -111,6 +126,7 @@ function Home(){
         setShirt(false)
         setShoe(false)
         setSweater(false)
+        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
@@ -120,6 +136,7 @@ function Home(){
         setShirt(false)
         setShoe(true)
         setSweater(false)
+        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
@@ -128,6 +145,7 @@ function Home(){
         setPant(false)
         setShirt(false)
         setShoe(false)
+        setCs(false)
         setSweater(false)
         setAboutUs(true)
         setContact(false)
@@ -139,6 +157,7 @@ function Home(){
         setShoe(false)
         setSweater(false)
         setAboutUs(false)
+        setCs(false)
         setContact(true)
     }
     const handleCart=()=>{
@@ -157,6 +176,7 @@ function Home(){
                 <button className={light ? 'lm' : 'dm'} onClick={handleSweaters}>Sweaters</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handlePants}>Pants</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handleShoes}>Shoes</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleCs}>Virtual Assistant</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handleMode}>{modeText}</button>
                 <div className="fix">
                     
@@ -199,7 +219,10 @@ function Home(){
           {contact && (
             <Contact/>
           )}
-          <Footer/>
+          {cs && (
+            <CS/>
+          )}
+          <Footer handleCS={handleCs}/>
           </div>
           
     </div>

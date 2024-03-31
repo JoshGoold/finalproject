@@ -9,7 +9,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaReddit } from "react-icons/fa";
-function Footer(){
+function Footer(props){
 
     return(
         <div className="footer">
@@ -22,7 +22,7 @@ function Footer(){
                         <li><MdOutlineRateReview/>&nbsp; Review</li>
                         <li><IoIosInformationCircle/>&nbsp; About us</li>
                         <li><MdOutlinePolicy/>&nbsp; Policy Statement</li>
-                        <li><MdSupportAgent/>&nbsp; Customer support</li>
+                        <li onClick={props.handleCS}><MdSupportAgent/>&nbsp; Customer support</li>
                     </ul>
                 </div>
                 <div className="logo">
