@@ -1,0 +1,62 @@
+.headImg {
+    height: 100vh;
+    min-height: 500px;
+    background-image: url('../assets/headerImage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgHeader {
+    text-align: center;
+}
+
+.outerContainer {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1380px;
+    padding: 0 24px;
+}
+
+.container-center {
+    justify-content: center;
+    position: relative;
+    display: block;
+    margin-bottom: 48px;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    column-gap: 123px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+
+}
+
+.grid-container img {
+    height: 280px;
+}
+
+.container-cell {
+    width: 50%;
+    position: relative;
+    display: block;
+}
+
+.container-cell-paragraph{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: .5px;
+    margin: 0 0 18px;
+}

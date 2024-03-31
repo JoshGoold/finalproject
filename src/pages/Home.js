@@ -10,7 +10,8 @@ import Shoes from "./Shoes";
 import axios from "axios";
 import { CiShoppingCart } from "react-icons/ci";
 import Default from '../assets/default.webp'
-import CustomerSupport from '../CustomerSupport.js'
+import CustomerSupport from "../CustomerSupport.js";
+
 function Home(){
     const [showSidePanel, setShowSidePanel] = useState(true);
     const [light, setLight] = useState(false);
@@ -49,21 +50,21 @@ function Home(){
             
         }).catch(err => console.log(err))
     }
-    useEffect(() => {
-        // Fetch the username from the server
-        axios.get('http://localhost:4100')
-            .then(response => {
-                if(response.data.valid){
-                    setUsername(response.data.username)
-                } else {
-                    //if not logged into any account automatically redirects you to login
-                    nav("/login");
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching username:', error);
-            });
-    }, []);
+    // useEffect(() => {
+    //     // Fetch the username from the server
+    //     axios.get('http://localhost:4100')
+    //         .then(response => {
+    //             if(response.data.valid){
+    //                 setUsername(response.data.username)
+    //             } else {
+    //                 //if not logged into any account automatically redirects you to login
+    //                 nav("/login");
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching username:', error);
+    //         });
+    // }, []);
 
    
     //variables for naviagtion handling
@@ -82,6 +83,8 @@ function Home(){
         setShoe(false)
         setCs(false)
         setSweater(false)
+        setAboutUs(false)
+        setContact(false)
     }
     const handleSweaters=()=>{
         setHome(false)
@@ -90,6 +93,8 @@ function Home(){
         setShoe(false)
         setCs(false)
         setSweater(true)
+        setAboutUs(false)
+        setContact(false)
     }
     const handleShirts=()=>{
         setHome(false)
@@ -98,6 +103,8 @@ function Home(){
         setShoe(false)
         setCs(false)
         setSweater(false)
+        setAboutUs(false)
+        setContact(false)
     }
     const handlePants=()=>{
         setHome(false)
@@ -106,6 +113,8 @@ function Home(){
         setShoe(false)
         setCs(false)
         setSweater(false)
+        setAboutUs(false)
+        setContact(false)
     }
     const handleShoes=()=>{
         setHome(false)
@@ -122,11 +131,31 @@ function Home(){
         setShoe(false)
         setCs(true)
         setSweater(false)
+        setAboutUs(false)
+        setContact(false)
+    }
+    const handleAboutUs=()=>{
+        setHome(false)
+        setPant(false)
+        setShirt(false)
+        setShoe(false)
+        setSweater(false)
+        setAboutUs(true)
+        setContact(false)
+    }
+    const handleContact=()=>{
+        setHome(false)
+        setPant(false)
+        setShirt(false)
+        setShoe(false)
+        setSweater(false)
+        setAboutUs(false)
+        setContact(true)
     }
     const handleCart=()=>{
         nav("/cart")
     }
-
+    
    
 
     return(
@@ -153,9 +182,9 @@ function Home(){
            
             <h1> {!showSidePanel && (<button className="show" onClick={handleSidePanel}>≣</button>)} <img src={Default} height="50px" width="50px"  alt=""></img> {username}</h1>
             <ul>
-                <li>About Us</li> 
+                <li className={light ? 'lm' : 'dm'} onClick={handleAboutUs}>About Us</li> 
                 <li>Services</li>
-                <li>Contact</li>
+                <li className={light ? 'lm' : 'dm'} onClick={handleContact}>Contact</li>
                 
                 <li id="cart" onClick={handleCart}>{<CiShoppingCart/>}</li>
                 
@@ -177,9 +206,9 @@ function Home(){
             <Pants />
           )}
           {cs && (
-            <CustomerSupport />
+            <CustomerSupport cs={handleCs}/>
           )}
-          <Footer cs={handleCs}/>
+          <Footer/>
           </div>
           
     </div>

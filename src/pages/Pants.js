@@ -1,4 +1,3 @@
-
 import pants from '../assets/pants.webp'
 import Product from "../Cart/Product";
 import { PRODUCTS} from "../Cart/Products";

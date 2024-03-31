@@ -4,6 +4,7 @@ import Login from "./AccountSetup/Login";
 import Register from "./AccountSetup/Register";
 import {Cart}  from "./Cart/Cart";
 import { ShopContextProvider } from "./Cart/shop-context";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
     <Routes>
       <Route index element={<Register/>}/>
       <Route path="/home" element={<Home/>}/>
-      <Route path="/login" element={<Login/>}/>
+      {/* <Route path="/login" element={<Login/>}/> */}
       <Route path="/cart" element={<Cart/>}/>
     </Routes>
     </BrowserRouter>
