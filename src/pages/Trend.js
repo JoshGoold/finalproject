@@ -56,8 +56,8 @@ function Trend(){
                 <br></br>
                 <h1 className="subhead">Top Sellers</h1>
                 <div className="sweaterProducts">
-                    {PRODUCTS.slice(17, 20).map((product)=>(
-                        <Product data={product}/>
+                    {PRODUCTS.slice(17, 20).map((product, index)=>(
+                        <Product key={index} data={product}/>
                     ))}
                     <img height="375px" src={Logo}></img>
                 </div>
@@ -65,8 +65,8 @@ function Trend(){
                     <div>
                     <h1 className="subhead">New Drops</h1>
                 <div className="sweaterProducts">
-                {PRODUCTS.slice(12, 16).map((product)=>(
-                    <Product data={product}/>
+                {PRODUCTS.slice(12, 16).map((product, index)=>(
+                    <Product key={index} data={product}/>
                 ))}
                 <button className="slide" onClick={handleSlide}>→</button>
                 </div>
@@ -76,8 +76,8 @@ function Trend(){
                      <div>
                      <h1 className="subhead">New Drops</h1>
                  <div className="sweaterProducts">
-                 {PRODUCTS.slice(7, 11).map((product)=>(
-                     <Product data={product}/>
+                 {PRODUCTS.slice(7, 11).map((product, index)=>(
+                     <Product key={index} data={product}/>
                  ))}
                  <button className="slide"  onClick={handleSlide}>→</button>
                  </div>
@@ -87,8 +87,8 @@ function Trend(){
                 
                 <h1 className="subhead">Explore Antiques</h1>
                 <div className="sweaterProducts">
-                {PRODUCTS.slice(0, 7).map((product)=>(
-                    <Product data={product}/>
+                {PRODUCTS.slice(0, 7).map((product,index)=>(
+                    <Product key={index} data={product}/>
                 ))}</div>
           </div>
     );

@@ -10,7 +10,7 @@ import Shoes from "./Shoes";
 import axios from "axios";
 import { CiShoppingCart } from "react-icons/ci";
 import Default from '../assets/default.webp'
-
+import CustomerSupport from '../CustomerSupport.js'
 function Home(){
     const [showSidePanel, setShowSidePanel] = useState(true);
     const [light, setLight] = useState(false);
@@ -72,6 +72,7 @@ function Home(){
     const [shirt, setShirt] = useState(false)
     const [pant, setPant] = useState(false)
     const [shoe,setShoe] = useState(false)
+    const [cs, setCs] = useState(false)
 
     //home navigation handling
     const handleHome =()=>{
@@ -79,6 +80,7 @@ function Home(){
         setPant(false)
         setShirt(false)
         setShoe(false)
+        setCs(false)
         setSweater(false)
     }
     const handleSweaters=()=>{
@@ -86,6 +88,7 @@ function Home(){
         setPant(false)
         setShirt(false)
         setShoe(false)
+        setCs(false)
         setSweater(true)
     }
     const handleShirts=()=>{
@@ -93,6 +96,7 @@ function Home(){
         setPant(false)
         setShirt(true)
         setShoe(false)
+        setCs(false)
         setSweater(false)
     }
     const handlePants=()=>{
@@ -100,6 +104,7 @@ function Home(){
         setPant(true)
         setShirt(false)
         setShoe(false)
+        setCs(false)
         setSweater(false)
     }
     const handleShoes=()=>{
@@ -107,6 +112,15 @@ function Home(){
         setPant(false)
         setShirt(false)
         setShoe(true)
+        setCs(false)
+        setSweater(false)
+    }
+    const handleCs=()=>{
+        setHome(false)
+        setPant(false)
+        setShirt(false)
+        setShoe(false)
+        setCs(true)
         setSweater(false)
     }
     const handleCart=()=>{
@@ -125,6 +139,7 @@ function Home(){
                 <button className={light ? 'lm' : 'dm'} onClick={handleSweaters}>Sweaters</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handlePants}>Pants</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handleShoes}>Shoes</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleCs}>AI Assistant</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handleMode}>{modeText}</button>
                 <div className="fix">
                     
@@ -161,7 +176,10 @@ function Home(){
           {pant && (
             <Pants />
           )}
-          <Footer/>
+          {cs && (
+            <CustomerSupport />
+          )}
+          <Footer cs={handleCs}/>
           </div>
           
     </div>
