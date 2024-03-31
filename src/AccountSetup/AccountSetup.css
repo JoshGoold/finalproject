@@ -1,0 +1,97 @@
+/* Styles for registration form */
+
+.body {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  /* Use multiple background layers with gradients */
+  background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(../assets/back.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+  .welcome{
+    margin-left: 3%;
+  }
+  
+  .register{
+    flex: 1;
+    width: 100%;
+    max-height: 100%;
+  }
+  .register .registerForm{
+    margin-right: 3%;
+    float: right;
+    width: 60%;
+    background-color: hsla(0, 0%, 100%, 0);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px hsl(0, 0%, 40%);
+  }
+  .register .registerForm .head{
+    padding: 10px;
+  }
+  .register .registerForm .head .fh{
+    font-weight: 300;
+  }
+  .register .registerForm .input-field{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .register .registerForm .input-field span{
+    display: flex;
+    align-items: center;
+  }
+   a{
+    font-size: 10px;
+    margin-top: -15px;
+  }
+  .register .registerForm .input-field input{
+    padding: 5px;
+    margin-left: 8px;
+  }
+  /* Animation for registration */
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-300px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  
+  }
+  @keyframes slideInRight {
+    from {
+      transform: translateX(300px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .slideInLeft{
+    animation: slideInLeft 0.5s ease-in-out;
+  }
+  .slideInRight{
+    animation: slideInRight 0.5s ease-in-out;
+  }
+  .register .btn{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-weight: 300;
+    font-family: Poppins;
+  }
