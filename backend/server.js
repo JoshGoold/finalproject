@@ -6,10 +6,16 @@ const mysql = require("mysql2");
 const bcrypt = require("bcryptjs")
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const OpenAi = require('openai')
 const app = express();
+require("dotenv").config();
+
 
 const salt = 10;
 
+const openai = new OpenAi({
+    apiKey: process.env.API_KEY
+})
 
 //setting up operating environment
 app.use(bodyParser.json())
@@ -148,3 +154,21 @@ app.post('/logout', (req, res) => {
     });
 });
 
+app.post("/chat-completion", (req,res)=>{
+    const userQuestion = req.body.userQuestion;
+    if(userQuestion.length > 0){
+        askGPT(userQuestion)
+        return res.status(200).json({valid: true, Message: `${answer}`})
+    } else{
+        return res.status(404).json({valid: false, Message: "System error, please try again"})
+    }
+})
+let answer = "";
+async function askGPT(userQuestion){
+    const chatCompletion = await openai.chat.completions.create({
+        model: 'gpt-3.5-turbo',
+        messages: [{"role": "user", "content": `${userQuestion}`}]
+    })
+    console.log(chatCompletion.choices[0].message.content)
+    answer = chatCompletion.choices[0].message.content;
+}
