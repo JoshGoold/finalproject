@@ -13,6 +13,13 @@ import Default from '../assets/default.webp';
 import AboutUs from "./AboutUs.js";
 import Contact from "./Contact.js";
 import CS from "../CS.js";
+import { FaHome } from "react-icons/fa";
+import { FaTshirt } from "react-icons/fa";
+import { GiShirt } from "react-icons/gi";
+import { PiPantsFill } from "react-icons/pi";
+import { GiConverseShoe } from "react-icons/gi";
+import { MdOutlineSupportAgent } from "react-icons/md";
+import { IoInvertMode } from "react-icons/io5";
 
 function Home(){
     const [showSidePanel, setShowSidePanel] = useState(true);
@@ -164,20 +171,26 @@ function Home(){
         nav("/cart")
     }
     
-   
+   const [view, setView] = useState(false);
+   const handleMouseOver=()=>{
+    setView(true)
+   }
+   const handleMouseOut=()=>{
+    setView(false)
+   }
 
     return(
         <div className="page">
             {showSidePanel && ( 
-            <div className="side-panel slideInLeft">
+            <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="side-panel slideInLeft">
                 <img className={light ? 'lm' : 'dm'} src={Logo}></img>
-                <button className={light ? 'lm' : 'dm'} onClick={handleHome}>Home</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleShirts}>Shirts</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleSweaters}>Sweaters</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handlePants}>Pants</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleShoes}>Shoes</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleCs}>Virtual Assistant</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleMode}>{modeText}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleHome}><FaHome/>&nbsp;{view ? 'Home' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleShirts}><FaTshirt/>&nbsp;{view ? 'Shirts' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleSweaters}><GiShirt/>&nbsp;{view ? 'Sweaters' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handlePants}><PiPantsFill/>&nbsp;{view ? 'Pants' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleShoes}><GiConverseShoe/>&nbsp;{view ? 'Shoes' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleCs}><MdOutlineSupportAgent/>&nbsp;{view ? 'Virtual Assistant' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleMode}><IoInvertMode/>&nbsp;{view ? `${modeText}` : ''}</button>
                 <div className="fix">
                     
                 <button id="end" className={light ? 'lm' : 'dm'}  onClick={handleLogout}>Logout</button>
