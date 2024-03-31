@@ -6,13 +6,14 @@ const mysql = require("mysql2");
 const bcrypt = require("bcryptjs")
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const OpenAi = require('openai')
 const app = express();
-const OpenAI = require('openai')
+
 
 const salt = 10;
-const apiKey = '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'
-const openai = new OpenAI({
-    apiKey: apiKey,
+const apiKey = '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';
+const openai = new OpenAi({
+    apiKey: apiKey
 })
 
 //setting up operating environment
@@ -154,21 +155,19 @@ app.post('/logout', (req, res) => {
 
 app.post("/chat-completion", (req,res)=>{
     const userQuestion = req.body.userQuestion;
-
     if(userQuestion.length > 0){
         askGPT(userQuestion)
-        return res.status(200).json({valid: true, Message: `George speaking ${answer}`})
+        return res.status(200).json({valid: true, Message: `${answer}`})
     } else{
-        return res.status(401).json({valid: false, Message: "System Error, sorry for any inconvenience"})
+        return res.status(404).json({valid: false, Message: "System error, please try again"})
     }
 })
 let answer = "";
 async function askGPT(userQuestion){
-
     const chatCompletion = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [{"role": "user", "content": `${userQuestion}`}],
-        });
-        console.log(chatCompletion.choices[0].message.content);
-        answer = chatCompletion.choices[0].message.content;
-}   
+        model: 'gpt-3.5-turbo',
+        messages: [{"role": "user", "content": `${userQuestion}`}]
+    })
+    console.log(chatCompletion.choices[0].message.content)
+    answer = chatCompletion.choices[0].message.content;
+}

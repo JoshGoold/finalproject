@@ -41,7 +41,7 @@ function Trend(){
     useEffect(()=>{
         const interval = setInterval(()=>{
             setCurrentSlide((prevSlide)=> (prevSlide+1)% slides.length)
-            setCurrentText((prevText)=> (prevText + 1)% texts.length )
+            setCurrentText((prevText)=> (prevText + 1)% texts.length)
         }, time);
         return ()=> clearInterval(interval)
     }, [])

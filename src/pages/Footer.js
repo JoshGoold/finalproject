@@ -1,4 +1,4 @@
-import Logo from './assets/logo.png'
+import Logo from '../assets/logo.png'
 import { IoIosContact } from "react-icons/io";
 import { MdOutlineRateReview } from "react-icons/md";
 import { IoIosInformationCircle } from "react-icons/io";
@@ -9,8 +9,8 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaReddit } from "react-icons/fa";
-function Footer(props){
 
+function Footer(props){
     return(
         <div className="footer">
             <hr color='black'></hr>
@@ -22,7 +22,7 @@ function Footer(props){
                         <li><MdOutlineRateReview/>&nbsp; Review</li>
                         <li><IoIosInformationCircle/>&nbsp; About us</li>
                         <li><MdOutlinePolicy/>&nbsp; Policy Statement</li>
-                        <li onClick={props.cs}><MdSupportAgent/>&nbsp; Customer support</li>
+                        <li onClick={props.handleCs}><MdSupportAgent/>&nbsp; Customer support</li>
                     </ul>
                 </div>
                 <div className="logo">
