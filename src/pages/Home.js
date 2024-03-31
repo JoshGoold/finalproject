@@ -20,6 +20,7 @@ import { PiPantsFill } from "react-icons/pi";
 import { GiConverseShoe } from "react-icons/gi";
 import { MdOutlineSupportAgent } from "react-icons/md";
 import { IoInvertMode } from "react-icons/io5";
+import { IoLogOutOutline } from "react-icons/io5";
 
 function Home(){
     const [showSidePanel, setShowSidePanel] = useState(true);
@@ -193,7 +194,7 @@ function Home(){
                 <button className={light ? 'lm' : 'dm'} onClick={handleMode}><IoInvertMode/>&nbsp;{view ? `${modeText}` : ''}</button>
                 <div className="fix">
                     
-                <button id="end" className={light ? 'lm' : 'dm'}  onClick={handleLogout}>Logout</button>
+                <button id="end" className={light ? 'lm' : 'dm'}  onClick={handleLogout}><IoLogOutOutline/>{view ? 'Logout' : ''}</button>
                 <button onClick={handleSidePanel} className="exit">❌</button>
                 </div>
             </div>)}
