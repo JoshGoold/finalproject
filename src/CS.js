@@ -3,10 +3,11 @@ import axios from 'axios'
 import background from './assets/csupport.avif'
 import Typewriter from 'typewriter-effect';
 import { FaArrowAltCircleUp } from "react-icons/fa";
-function CS() {
+function CS(props) {
   const [userQuestion, setUserQuestion] = useState("");
   const [aiResponse, setaiResponse] = useState("");
 
+  
   async function submit(e) {
     e.preventDefault();
     try {
@@ -50,7 +51,7 @@ function CS() {
       </div>
       <p className='b'>Our virtual assistant George is equipped to provide you with knowledge about our website, our company and our commitment to our community <br/> 
          Ask him any question you may have about available items, trends, top sellers<br/>
-         if you have any question george cannot answer please  <a href='#'>contact us</a></p>
+         if you have any question george cannot answer please  <a onClick={props.hCU}>contact us</a></p>
     </>
   )
 }

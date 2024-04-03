@@ -237,7 +237,7 @@ function Home(){
             <Contact/>
           )}
           {cs && (
-            <CS/>
+            <CS hCU={handleContact}/>
           )}
           <Footer handleCS={handleCs}/>
           </div>
