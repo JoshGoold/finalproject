@@ -12,12 +12,22 @@ import { CiShoppingCart } from "react-icons/ci";
 import Default from '../assets/default.webp';
 import AboutUs from "./AboutUs.js";
 import Contact from "./Contact.js";
+import CS from "../CS.js";
+import { FaHome } from "react-icons/fa";
+import { FaTshirt } from "react-icons/fa";
+import { GiShirt } from "react-icons/gi";
+import { PiPantsFill } from "react-icons/pi";
+import { GiConverseShoe } from "react-icons/gi";
+import { MdOutlineSupportAgent } from "react-icons/md";
+import { IoInvertMode } from "react-icons/io5";
+import { IoLogOutOutline } from "react-icons/io5";
 
 function Home(){
     const [showSidePanel, setShowSidePanel] = useState(true);
     const [light, setLight] = useState(false);
     const [modeText, setModeText] = useState("Light Mode")
     const [username, setUsername] = useState("")
+    const [panelWidth, setPanelWidth] = useState('100px');
     const nav = useNavigate()
 
 
@@ -51,21 +61,21 @@ function Home(){
             
         }).catch(err => console.log(err))
     }
-    // useEffect(() => {
-    //     // Fetch the username from the server
-    //     axios.get('http://localhost:4100')
-    //         .then(response => {
-    //             if(response.data.valid){
-    //                 setUsername(response.data.username)
-    //             } else {
-    //                 //if not logged into any account automatically redirects you to login
-    //                 nav("/login");
-    //             }
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching username:', error);
-    //         });
-    // }, []);
+    useEffect(() => {
+        // Fetch the username from the server
+        axios.get('http://localhost:4100')
+            .then(response => {
+                if(response.data.valid){
+                    setUsername(response.data.username)
+                } else {
+                    //if not logged into any account automatically redirects you to login
+                    nav("/login");
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching username:', error);
+            });
+    }, []);
 
    
     //variables for naviagtion handling
@@ -76,10 +86,22 @@ function Home(){
     const [shoe,setShoe] = useState(false)
     const [aboutUs, setAboutUs] = useState(false)
     const [contact, setContact] = useState(false)
+    const [cs, setCs] = useState(false)
 
     //home navigation handling
     const handleHome =()=>{
         setHome(true)
+        setPant(false)
+        setShirt(false)
+        setShoe(false)
+        setCs(false)
+        setSweater(false)
+        setAboutUs(false)
+        setContact(false)
+    }
+    const handleCs =()=>{
+        setHome(false)
+        setCs(true)
         setPant(false)
         setShirt(false)
         setShoe(false)
@@ -93,6 +115,7 @@ function Home(){
         setShirt(false)
         setShoe(false)
         setSweater(true)
+        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
@@ -101,6 +124,7 @@ function Home(){
         setPant(false)
         setShirt(true)
         setShoe(false)
+        setCs(false)
         setSweater(false)
         setAboutUs(false)
         setContact(false)
@@ -111,6 +135,7 @@ function Home(){
         setShirt(false)
         setShoe(false)
         setSweater(false)
+        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
@@ -120,6 +145,7 @@ function Home(){
         setShirt(false)
         setShoe(true)
         setSweater(false)
+        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
@@ -128,6 +154,7 @@ function Home(){
         setPant(false)
         setShirt(false)
         setShoe(false)
+        setCs(false)
         setSweater(false)
         setAboutUs(true)
         setContact(false)
@@ -139,28 +166,38 @@ function Home(){
         setShoe(false)
         setSweater(false)
         setAboutUs(false)
+        setCs(false)
         setContact(true)
     }
     const handleCart=()=>{
         nav("/cart")
     }
     
-   
+   const [view, setView] = useState(false);
+   const handleMouseOver=()=>{
+    setView(true)
+    setPanelWidth('200px');
+   }
+   const handleMouseOut=()=>{
+    setView(false)
+    setPanelWidth('100px');
+   }
 
     return(
         <div className="page">
             {showSidePanel && ( 
-            <div className="side-panel slideInLeft">
+            <div style={{ width: panelWidth, transition: 'width 0.2s ease-in-out' }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="side-panel slideInLeft">
                 <img className={light ? 'lm' : 'dm'} src={Logo}></img>
-                <button className={light ? 'lm' : 'dm'} onClick={handleHome}>Home</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleShirts}>Shirts</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleSweaters}>Sweaters</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handlePants}>Pants</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleShoes}>Shoes</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleMode}>{modeText}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleHome}><FaHome/>&nbsp;{view ? 'Home' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleShirts}><FaTshirt/>&nbsp;{view ? 'Shirts' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleSweaters}><GiShirt/>&nbsp;{view ? 'Sweaters' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handlePants}><PiPantsFill/>&nbsp;{view ? 'Pants' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleShoes}><GiConverseShoe/>&nbsp;{view ? 'Shoes' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleCs}><MdOutlineSupportAgent/>&nbsp;{view ? 'Assistant' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleMode}><IoInvertMode/>&nbsp;{view ? `${modeText}` : ''}</button>
                 <div className="fix">
                     
-                <button id="end" className={light ? 'lm' : 'dm'}  onClick={handleLogout}>Logout</button>
+                <button id="end" className={light ? 'lm' : 'dm'}  onClick={handleLogout}><IoLogOutOutline/>&nbsp;{view ? 'Logout' : ''}</button>
                 <button onClick={handleSidePanel} className="exit">❌</button>
                 </div>
             </div>)}
@@ -199,7 +236,10 @@ function Home(){
           {contact && (
             <Contact/>
           )}
-          <Footer/>
+          {cs && (
+            <CS hCU={handleContact}/>
+          )}
+          <Footer handleCS={handleCs}/>
           </div>
           
     </div>
