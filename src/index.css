@@ -48,17 +48,17 @@ html{
     flex-direction: column;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
-    max-width: 200px;
     gap: 2px;
     padding: 2px;
     position: sticky;
     top: 0;
 }
+
 .page .side-panel button{
     padding: 10px;
     font-family: Poppins;
     font-weight: 200;
-    font-size: 1.125em;
+    font-size: 1.1em;
     display: flex;
     align-items: center;
     justify-content: center;

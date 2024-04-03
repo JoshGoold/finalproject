@@ -1,0 +1,74 @@
+.wrap{
+    background-color: rgba(82, 82, 82, 0.428);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+.wrap .ai .text{
+    color: black;
+    text-align: left;
+}
+.wrap form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+.wrap form input{
+    padding: 10px;
+    border-radius: 30px;
+    width: 60%;
+    color: black;
+    background-color: white;
+}
+.wrap .ai .background{
+    background-color: rgba(255, 255, 255, 0.901);
+    border-radius: 20px;
+    padding: 10px;
+}
+.h{
+    font-weight: 400;
+    padding: 10px;
+    text-align: center;
+}
+.wrap button{
+    background-color: transparent;
+    border: none;
+    font-size: 1.75em;
+    margin-top: 3px;
+    transition: 0.2s ease-in-out all;
+}
+.wrap button:hover{
+    transform: scale(1.1);
+    color: hsl(0, 0%, 90%);
+}
+.b{
+    padding: 10px;
+    font-weight: 200;
+    border: 0.2px solid;
+    border-radius: 10px;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    margin-top: 30px;
+}
+.abc{
+    position: relative;
+}
+.abc img{
+    object-fit: cover;
+    width: 100%;
+    height: 450px;
+    opacity: 0.3;
+}
+.abc h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    font-weight: 400;
+}

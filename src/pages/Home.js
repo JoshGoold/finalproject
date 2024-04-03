@@ -27,6 +27,7 @@ function Home(){
     const [light, setLight] = useState(false);
     const [modeText, setModeText] = useState("Light Mode")
     const [username, setUsername] = useState("")
+    const [panelWidth, setPanelWidth] = useState('100px');
     const nav = useNavigate()
 
 
@@ -175,15 +176,17 @@ function Home(){
    const [view, setView] = useState(false);
    const handleMouseOver=()=>{
     setView(true)
+    setPanelWidth('200px');
    }
    const handleMouseOut=()=>{
     setView(false)
+    setPanelWidth('100px');
    }
 
     return(
         <div className="page">
             {showSidePanel && ( 
-            <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="side-panel slideInLeft">
+            <div style={{ width: panelWidth, transition: 'width 0.2s ease-in-out' }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="side-panel slideInLeft">
                 <img className={light ? 'lm' : 'dm'} src={Logo}></img>
                 <button className={light ? 'lm' : 'dm'} onClick={handleHome}><FaHome/>&nbsp;{view ? 'Home' : ''}</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handleShirts}><FaTshirt/>&nbsp;{view ? 'Shirts' : ''}</button>
@@ -194,7 +197,7 @@ function Home(){
                 <button className={light ? 'lm' : 'dm'} onClick={handleMode}><IoInvertMode/>&nbsp;{view ? `${modeText}` : ''}</button>
                 <div className="fix">
                     
-                <button id="end" className={light ? 'lm' : 'dm'}  onClick={handleLogout}><IoLogOutOutline/>{view ? 'Logout' : ''}</button>
+                <button id="end" className={light ? 'lm' : 'dm'}  onClick={handleLogout}><IoLogOutOutline/>&nbsp;{view ? 'Logout' : ''}</button>
                 <button onClick={handleSidePanel} className="exit">❌</button>
                 </div>
             </div>)}
