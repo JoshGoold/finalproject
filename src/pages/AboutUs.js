@@ -2,13 +2,14 @@ import Award from '../assets/award.jpg';
 import Recycled from '../assets/recycled.jpg';
 import './aboutUs.css';
 import headerImg from '../assets/headerImage.jpg'
+import Typewriter from 'typewriter-effect';
 
 function AboutUs() {
     return (
-        <div className='page-body'>
+        <div className='page-body slideInRight'>
             <div className='abhead'>
                 <img src={headerImg}></img>
-               <h1> Embrace Your Authentic Style.<br />Where Trends Meet Individuality!</h1>
+               <h1 ><Typewriter options={{autoStart: true, loop: true, delay: 80, strings: ["Embrace Your Authentic Style<br/> Where Trends Meet Individuality!", "We Support our community", "About Us", "Join our community"]}}/></h1>
             </div>
 
             <p class="aboutUsContent" style={{ marginLeft: '60px', fontSize: '17px', padding: '0' }}>
