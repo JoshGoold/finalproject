@@ -193,7 +193,7 @@ function Home(){
                 <button className={light ? 'lm' : 'dm'} onClick={handleSweaters}><GiShirt/>&nbsp;{view ? 'Sweaters' : ''}</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handlePants}><PiPantsFill/>&nbsp;{view ? 'Pants' : ''}</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handleShoes}><GiConverseShoe/>&nbsp;{view ? 'Shoes' : ''}</button>
-                <button className={light ? 'lm' : 'dm'} onClick={handleCs}><MdOutlineSupportAgent/>&nbsp;{view ? 'Virtual Assistant' : ''}</button>
+                <button className={light ? 'lm' : 'dm'} onClick={handleCs}><MdOutlineSupportAgent/>&nbsp;{view ? 'Assistant' : ''}</button>
                 <button className={light ? 'lm' : 'dm'} onClick={handleMode}><IoInvertMode/>&nbsp;{view ? `${modeText}` : ''}</button>
                 <div className="fix">
                     
