@@ -9,20 +9,20 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaReddit } from "react-icons/fa";
-function Footer(props){
+function Footer(props) {
 
-    return(
+    return (
         <div className="footer">
             <hr color='black'></hr>
-            <br/>
+            <br />
             <div className="main">
                 <div className="links">
                     <ul>
-                        <li><IoIosContact/>&nbsp; Contact</li>
-                        <li><MdOutlineRateReview/>&nbsp; Review</li>
-                        <li><IoIosInformationCircle/>&nbsp; About us</li>
-                        <li><MdOutlinePolicy/>&nbsp; Policy Statement</li>
-                        <li onClick={props.handleCS}><MdSupportAgent/>&nbsp; Customer support</li>
+                        <li onClick={props.handleContact}><IoIosContact />&nbsp; Contact</li>
+                        <li><MdOutlineRateReview />&nbsp; Review</li>
+                        <li onClick={props.handleAboutUs}><IoIosInformationCircle />&nbsp; About us</li>
+                        <li><MdOutlinePolicy />&nbsp; Policy Statement</li>
+                        <li onClick={props.handleCS}><MdSupportAgent />&nbsp; Customer support</li>
                     </ul>
                 </div>
                 <div className="logo">
@@ -30,11 +30,11 @@ function Footer(props){
                 </div>
                 <div className="socials">
                     <ul>
-                        <li><FaTwitter/>&nbsp; Twitter</li>
-                        <li><FaFacebook/>&nbsp; Facebook</li>
-                        <li><FaInstagram/>&nbsp; Instagram</li>
-                        <li><FaYoutube/>&nbsp; Youtube</li>
-                        <li><FaReddit/>&nbsp; Reddit</li>
+                        <li><FaTwitter />&nbsp; Twitter</li>
+                        <li><FaFacebook />&nbsp; Facebook</li>
+                        <li><FaInstagram />&nbsp; Instagram</li>
+                        <li><FaYoutube />&nbsp; Youtube</li>
+                        <li><FaReddit />&nbsp; Reddit</li>
                     </ul>
                 </div>
             </div>
