@@ -206,6 +206,8 @@ async function askGPT(userQuestion) {
 
     // Fetch response
     const [{text: {value: msg}}] = messages.data[1].content;
+    console.log(messages.data)
+    
     console.log(msg)
     return msg
   } catch (error) {

@@ -13,7 +13,7 @@ function Login(){
 
     //redirects to login path
     const redirect = () =>{
-        nav("/home");
+        nav(`/home/${username}`);
     }
     //redirects to register
     const register = () =>{
@@ -98,7 +98,7 @@ function Login(){
         Axios.get('http://localhost:4100')
             .then(response => {
                 if(response.data.valid){
-                    nav("/home");
+                    nav(`/home/${username}`);
                 } else {
                     console.log("invalid")
                     nav("/login");

@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Logo from '../assets/logo.png'
 import Trend from "./Trend";
 import Shirts from "./Shirt";
 import Sweaters from "./Sweater";
-import Footer from "../Footer.js";
+import Footer from "./Footer.js";
 import Pants from "./Pants";
 import Shoes from "./Shoes";
 import axios from "axios";
@@ -12,7 +12,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import Default from '../assets/default.webp';
 import AboutUs from "./AboutUs.js";
 import Contact from "./Contact.js";
-import CS from "../CS.js";
+import CS from "./CS.js";
 import { FaHome } from "react-icons/fa";
 import { FaTshirt } from "react-icons/fa";
 import { GiShirt } from "react-icons/gi";
@@ -30,7 +30,7 @@ function Home() {
     const [panelWidth, setPanelWidth] = useState('100px');
     const nav = useNavigate()
 
-
+    const {user} = useParams();
 
     const handleSidePanel = () => {
         setShowSidePanel(false)
@@ -205,7 +205,7 @@ function Home() {
             <div className="page-body">
                 <div className="head fadeIn slideInLeft">
 
-                    <h1> {!showSidePanel && (<button className="show" onClick={handleSidePanel}>≣</button>)} <img src={Default} height="50px" width="50px" alt=""></img> {username}</h1>
+                    <h1> {!showSidePanel && (<button className="show" onClick={handleSidePanel}>≣</button>)} <img src={Default} height="50px" width="50px" alt=""></img> {user}</h1>
                     <ul>
                         <li className={light ? 'lm' : 'dm'} onClick={handleAboutUs}>About Us</li>
                         <li>Services</li>
