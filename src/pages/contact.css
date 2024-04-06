@@ -54,11 +54,17 @@ form ::placeholder {
     color: rgb(143, 137, 137);
 }
 
-form #message {
-    height: 200px;
+form textarea {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    color: black;
+
+
 }
 
 form button {
+    padding-top: 5%;
     height: 20px;
     font-size: 20px;
     border: 0;

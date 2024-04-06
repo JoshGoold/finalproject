@@ -61,6 +61,7 @@ function Home() {
 
             }).catch(err => console.log(err))
     }
+
     useEffect(() => {
         // Fetch the username from the server
         axios.get('http://localhost:4100')
@@ -76,7 +77,6 @@ function Home() {
                 console.error('Error fetching username:', error);
             });
     }, []);
-
 
     //variables for naviagtion handling
     const [home, setHome] = useState(true)
