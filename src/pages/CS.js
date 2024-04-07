@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import background from './assets/csupport.avif'
+import background from '../assets/csupport.avif'
 import Typewriter from 'typewriter-effect';
 import { FaArrowAltCircleUp } from "react-icons/fa";
 function CS(props) {
@@ -15,6 +15,7 @@ function CS(props) {
         userQuestion: userQuestion,
       });
       if (response.data.valid) {
+        setaiResponse("")
         setaiResponse(response.data.Message);
       } else {
         setaiResponse("Error");

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { ShopContext } from "./shop-context";
+import {useNavigate} from 'react-router-dom'
 
 function Product(props) {
     const { id, title, price, img, desc } = props.data;
@@ -16,8 +17,14 @@ function Product(props) {
         setSelectedImage(null);
     };
 
+    const nav = useNavigate("");
+
+    const handleItemPage=()=>{
+        nav(`/shop/${id}`)
+    }
+
     return (
-        <div className="item">
+        <div onClick={handleItemPage} className="item">
             <div className="image-container"  style={{ position: 'relative', display: 'inline-block' }}>
                 <img alt={title} src={img} onClick={() => handleImageDescription(img)}></img>
                 {selectedImage === img && (

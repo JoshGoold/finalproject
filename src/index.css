@@ -186,3 +186,6 @@ html{
 .slide:hover{
     background-color: rgba(0, 0, 0, 0.168);
 }
+.flex span img{
+    height: 500px;
+}
