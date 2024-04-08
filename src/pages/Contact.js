@@ -5,21 +5,17 @@ function Contact() {
     const handleFormSubmit = (event) => {
         event.preventDefault(); // Prevent default form submission behavior
 
-        console.log('event.target:', event.target); // Log the event.target object
-
         const formName = event.target.elements.formName.value;
         const formEmail = event.target.elements.formEmail.value;
         const formPhone = event.target.elements.formPhone.value;
         const formMessage = event.target.elements.formMessage.value;
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        // Validate name
         if (!formName) {
             alert('Please enter your name.');
             return;
         }
 
-        // Validate email
         if (!formEmail) {
             alert('Please enter your email address.');
             return;
@@ -28,19 +24,16 @@ function Contact() {
             return;
         }
 
-        // Validate phone
         if (formPhone && !/^\d{10}$/.test(formPhone)) {
             alert('Please enter a valid 10-digit phone number.');
             return;
         }
 
-        // Validate message
         if (!formMessage) {
             alert('Please enter your message.');
             return;
         }
 
-        // If all validations pass, perform form submission or further processing here
         alert('Form submitted successfully!');
     }
 
@@ -78,7 +71,6 @@ function Contact() {
                     </div>
                 </div>
                 <div className="Direction">
-                    {/* <a href="https://maps.app.goo.gl/PmJh7dzEW4Ru5jUJ7" className='DirectionLink'>DIRECTIONS</a> */}
                     <br></br>
                     <iframe
                         className="google-map"
