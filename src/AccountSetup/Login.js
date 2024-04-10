@@ -13,12 +13,13 @@ function Login(){
 
     //redirects to login path
     const redirect = () =>{
-        nav("/home");
+        nav(`/home/${username}`);
     }
     //redirects to register
     const register = () =>{
         nav("/");
     }
+   
     //state variables used within component
     const [visible, setVisible] = useState(true);
     const [username, setUsername] = useState("");
@@ -58,10 +59,11 @@ function Login(){
     }
     //handles password modification
     const handleNewPassword = () =>{
+       
         if (email === "" || newPassword !== password){
             alert("Please provide a valid email and ensure passwords match.")
         } else {
-            Axios.post("http://localhost:4100/changepass", {
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}/changepass`, {
                 email: email,
                 password: newPassword,
             }).then((response)=>{
@@ -81,7 +83,7 @@ function Login(){
         if(password == "" || username == ""){
             alert("Please enter all specified fields")
         }  else {
-            Axios.post("http://localhost:4100/login", {
+            Axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
                 username: username,
                 password: password,
             }).then((response)=>{
@@ -95,10 +97,10 @@ function Login(){
     }
     useEffect(() => {
         // Fetch the username from the server
-        Axios.get('http://localhost:4100')
+        Axios.get(process.env.REACT_APP_BACKEND_URL)
             .then(response => {
                 if(response.data.valid){
-                    nav("/home");
+                    nav(`/home/${username}`);
                 } else {
                     console.log("invalid")
                     nav("/login");
@@ -106,6 +108,7 @@ function Login(){
             })
             .catch(error => {
                 console.error('Error fetching username:', error);
+                console.log(process.env.REACT_APP_BACKEND_URL)
             });
     }, []);
 

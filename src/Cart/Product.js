@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { ShopContext } from "./shop-context";
+import {useNavigate} from 'react-router-dom'
+import { BiExpand } from "react-icons/bi";
 
 function Product(props) {
     const { id, title, price, img, desc } = props.data;
@@ -16,6 +18,12 @@ function Product(props) {
         setSelectedImage(null);
     };
 
+    const nav = useNavigate("");
+
+    const handleItemPage=()=>{
+        nav(`/shop/${id}`)
+    }
+
     return (
         <div className="item">
             <div className="image-container"  style={{ position: 'relative', display: 'inline-block' }}>
@@ -29,7 +37,9 @@ function Product(props) {
             </div>
             <h1>{title}</h1>
             <p>${price}</p>
-            <button onClick={() => addToCart(id)}>Add to Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}</button>
+            <span className="btn-flex">
+            <h1><BiExpand className="full-view" onClick={handleItemPage}/></h1>
+            <button onClick={() => addToCart(id)}>Add to Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}</button></span>
 
         </div>
     );
