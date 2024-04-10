@@ -69,3 +69,17 @@
 .cart .head button{
     padding: 5px;
 }
+.full-view{
+   font-size: 20px;
+   margin-top: 5px;
+   transition: 0.2s ease-in-out all;
+}
+.full-view:hover{
+    transform: translateY(-5px);
+    color: rgba(255, 255, 255, 0.736);
+}
+.btn-flex{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}

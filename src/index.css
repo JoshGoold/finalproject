@@ -189,3 +189,13 @@ html{
 .flex span img{
     height: 500px;
 }
+.home-pp{
+    background-color: transparent;
+    font-size: 32px;
+    border: none;
+    transition: 0.2s ease-in-out all;
+}
+.home-pp:hover{
+    transform: scale(1.1);
+    color: rgba(255, 255, 255, 0.682);
+}

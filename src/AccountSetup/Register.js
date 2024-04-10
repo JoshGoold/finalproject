@@ -26,7 +26,7 @@ function Register(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [registerStatus, setRegisterStatus] = useState("");
-
+    const backendUrl = `http://${process.env.BACKEND_SERVICE}:${process.env.BACKEND_PORT}`
     //stores user input
     const handleUsername = (e) => {
         setUsername(e.target.value);
@@ -47,7 +47,7 @@ function Register(){
         } else if (password.length > 10){
             alert("Password must be 10 or less characters")
         } else {
-            Axios.post("http://localhost:4100/register", {
+            Axios.post(backendUrl, {
                 username: username,
                 email: email,
                 password: password,

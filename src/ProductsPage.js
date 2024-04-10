@@ -9,6 +9,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import { FaHome } from "react-icons/fa";
 
 function ProductsPage() {
+  const backendUrl = `http://${process.env.BACKEND_SERVICE}:${process.env.BACKEND_PORT}`
   const { id } = useParams();
   const [showSidePanel, setShowSidePanel] = useState(true);
   const { addToCart, cartItem } = useContext(ShopContext);
@@ -27,7 +28,7 @@ function ProductsPage() {
   useEffect(() => {
     // Fetch the username from the server
     axios
-      .get("http://localhost:4100")
+      .get(backendUrl)
       .then((response) => {
         if (response.data.valid) {
           setUsername(response.data.username);
@@ -48,7 +49,7 @@ function ProductsPage() {
           <h1>
             {" "}
             {showSidePanel && (
-              <button className="home" onClick={handleHome}>
+              <button className="home-pp" onClick={handleHome}>
                 <FaHome />
               </button>
             )}{" "}

@@ -31,7 +31,7 @@ function Home() {
     const nav = useNavigate()
 
     const {user} = useParams();
-
+    const backendUrl = `http://${process.env.BACKEND_SERVICE}:${process.env.BACKEND_PORT}`
     const handleSidePanel = () => {
         setShowSidePanel(false)
         if (showSidePanel === false) {
@@ -53,7 +53,7 @@ function Home() {
     }
     axios.defaults.withCredentials = true;
     const handleLogout = () => {
-        axios.post("http://localhost:4100/logout")
+        axios.post(backendUrl)
             .then(res => {
                 if (res.data.Message === "Success") {
                     nav("/login");
@@ -64,7 +64,7 @@ function Home() {
 
     useEffect(() => {
         // Fetch the username from the server
-        axios.get('http://localhost:4100')
+        axios.get(backendUrl)
             .then(response => {
                 if (response.data.valid) {
                     setUsername(response.data.username)

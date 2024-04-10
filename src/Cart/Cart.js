@@ -10,10 +10,10 @@ export const Cart = () => {
 
     const nav = useNavigate()
     const [username, setUsername] = useState("")
-
+    const backendUrl = `http://${process.env.BACKEND_SERVICE}:${process.env.BACKEND_PORT}`
     useEffect(() => {
         // Fetch the username from the server
-        axios.get('http://localhost:4100')
+        axios.get(backendUrl)
             .then(response => {
                 if (response.data.valid) {
                     setUsername(response.data.username)

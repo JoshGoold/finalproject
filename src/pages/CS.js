@@ -6,12 +6,12 @@ import { FaArrowAltCircleUp } from "react-icons/fa";
 function CS(props) {
   const [userQuestion, setUserQuestion] = useState("");
   const [aiResponse, setaiResponse] = useState("");
-
+  const backendUrl = `http://${process.env.BACKEND_SERVICE}:${process.env.BACKEND_PORT}`
   
   async function submit(e) {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4100/chat-completion", {
+      const response = await axios.post(backendUrl, {
         userQuestion: userQuestion,
       });
       if (response.data.valid) {

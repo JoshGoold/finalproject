@@ -36,11 +36,11 @@ button {
     border: 0;
   }
 
-form label {
+.gridRight form label {
     display: block;
 }
 
-form input {
+.gridRight form input {
     width: 100%;
     height: 20px;
     font-size: 20px;
@@ -50,11 +50,11 @@ form input {
     color: black;
 }
 
-form ::placeholder {
+.gridRight form ::placeholder {
     color: rgb(143, 137, 137);
 }
 
-form textarea {
+.gridRight form textarea {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
     font-size: 20px;
@@ -63,7 +63,7 @@ form textarea {
 
 }
 
-form button {
+.gridRight form button {
     padding-top: 5%;
     height: 20px;
     font-size: 20px;
