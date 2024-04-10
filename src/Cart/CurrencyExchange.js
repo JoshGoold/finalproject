@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function CurrencyExchange({ children }) {
     const [exchangeRates, setExchangeRates] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchExchangeRates();
@@ -23,14 +24,17 @@ function CurrencyExchange({ children }) {
             })
             .then(data => {
                 setExchangeRates(data);
+                setError(null); // Reset error state if successful response
             })
             .catch(error => {
                 console.error('Error fetching exchange rates:', error);
+                setError(error.message); // Set error state with the error message
             });
     };
 
-    return children(exchangeRates)
-    
+    const memoizedExchangeRates = useMemo(() => exchangeRates, [exchangeRates]);
+
+    return children(memoizedExchangeRates, error);
 }
 
 export default CurrencyExchange;

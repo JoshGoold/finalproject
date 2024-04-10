@@ -2,40 +2,38 @@ import './contact.css';
 
 function Contact() {
 
-    const handleSubmit = (event) => {
+    const handleFormSubmit = (event) => {
         event.preventDefault(); // Prevent default form submission behavior
 
-        const { name, email, phone, message } = event.target.elements;
+        const formName = event.target.elements.formName.value;
+        const formEmail = event.target.elements.formEmail.value;
+        const formPhone = event.target.elements.formPhone.value;
+        const formMessage = event.target.elements.formMessage.value;
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        // Validate name
-        if (!name.value) {
+        if (!formName) {
             alert('Please enter your name.');
             return;
         }
 
-        // Validate email
-        if (!email.value) {
+        if (!formEmail) {
             alert('Please enter your email address.');
             return;
-        } else if (!emailPattern.test(email.value)) {
+        } else if (!emailPattern.test(formEmail)) {
             alert('Please enter a valid email address.');
             return;
         }
 
-        // Validate phone
-        if (phone.value && !/^\d{10}$/.test(phone.value)) {
+        if (formPhone && !/^\d{10}$/.test(formPhone)) {
             alert('Please enter a valid 10-digit phone number.');
             return;
         }
 
-        // Validate message
-        if (!message.value) {
+        if (!formMessage) {
             alert('Please enter your message.');
             return;
         }
 
-        // If all validations pass, perform form submission or further processing here
         alert('Form submitted successfully!');
     }
 
@@ -73,7 +71,6 @@ function Contact() {
                     </div>
                 </div>
                 <div className="Direction">
-                    {/* <a href="https://maps.app.goo.gl/PmJh7dzEW4Ru5jUJ7" className='DirectionLink'>DIRECTIONS</a> */}
                     <br></br>
                     <iframe
                         className="google-map"
@@ -88,25 +85,25 @@ function Contact() {
                 </div>
             </div>
             <div className='gridRight'>
-                <form action="">
+                <form onSubmit={handleFormSubmit}>
                     <h2>Contact Us</h2>
                     <div className='nameField'>
                         <label htmlFor="name">Name <span style={{ color: 'red' }}>* </span> </label>
-                        <input type="text" id="Name" name="name" required />
+                        <input type="text" id="Name" name="formName" required />
                     </div>
                     <div className='emailField'>
                         <label htmlFor="email">Email <span style={{ color: 'red' }}>* </span></label>
-                        <input type="email" id="Email" name="email" placeholder="example@example.com" required />
+                        <input type="email" id="Email" name="formEmail" placeholder="example@example.com" required />
                     </div>
                     <div className='phoneField'>
                         <label htmlFor="phone">Phone </label>
-                        <input type="tel" id="Phone" name="phone" placeholder="(000) 000-0000" />
+                        <input type="tel" id="Phone" name="formPhone" placeholder="(000) 000-0000" />
                     </div>
                     <div className='messageField'>
                         <label htmlFor="message">Message <span style={{ color: 'red' }}>* </span></label>
-                        <textarea id="Message" name="message" rows="4" required />
+                        <textarea id="Message" name="formMessage" rows="4" required />
                     </div>
-                    <button type="submit" onClick={handleSubmit}>Submit</button>
+                    <button type="submit">Submit</button>
                     <br /><br /><br />
                 </form>
             </div>
