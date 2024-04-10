@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  quest-react:
+    links: 
+      - db
+    build:
+      context: .
+    environment:
+      TZ: America/Toronto
+      DASHBOARD_USER: admin
+      DASHBOARD_PASSWORD: changeme
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: "password"
+      PUID: 1000
+      PGID: 1000
+   
+    ports:
+      - '3000:3000'
+
+  backend:
+    build:
+      context: .  
+    ports:
+      - '4100:4100'
+
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'questdb'
+      MYSQL_PASSWORD: 'userpassword'
+      MYSQL_ROOT_PASSWORD: 'D94uw6y8!!'
+    ports:
+      - '3315:3315'
+    volumes:
+      - /temp/db:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8082:80
+    environment:
+      - PMA_ARBITRARY=1
+
+    
