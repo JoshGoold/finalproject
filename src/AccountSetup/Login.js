@@ -61,7 +61,7 @@ function Login(){
         if (email === "" || newPassword !== password){
             alert("Please provide a valid email and ensure passwords match.")
         } else {
-            Axios.post("http://localhost:4100/changepass", {
+            Axios.post(`/api/changepass`, {
                 email: email,
                 password: newPassword,
             }).then((response)=>{
@@ -81,7 +81,7 @@ function Login(){
         if(password == "" || username == ""){
             alert("Please enter all specified fields")
         }  else {
-            Axios.post("http://localhost:4100/login", {
+            Axios.post(`/api/login`, {
                 username: username,
                 password: password,
             }).then((response)=>{
@@ -95,7 +95,7 @@ function Login(){
     }
     useEffect(() => {
         // Fetch the username from the server
-        Axios.get('http://localhost:4100')
+        Axios.get("/api")
             .then(response => {
                 if(response.data.valid){
                     nav("/home");

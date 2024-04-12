@@ -38,6 +38,10 @@ function Trend(){
         "For the best You",
         "The Future is Now"
     ]
+    //this effieciently cycles through slides by first capturing the previous/
+    //then increasing the index by one to get the next slide, we then perform a
+    //modulus calculation on the total slide length to get the remainder of slides
+    //this way it will never go out of bounds
     useEffect(()=>{
         const interval = setInterval(()=>{
             setCurrentSlide((prevSlide)=> (prevSlide+1)% slides.length)

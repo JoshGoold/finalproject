@@ -4,6 +4,9 @@ import { useState } from "react";
 
 export const ShopContext = createContext(null);
 
+//this creates an object for each of the products
+//we use functions below to modify the value of the index positions of the
+//products this is the basic behaviour behind our shopping cart functionailty
 const getDefaultCart =() =>{
     let cart = {}
     for (let i = 1; i < PRODUCTS.length + 1; i++){
@@ -16,12 +19,16 @@ const getDefaultCart =() =>{
 export const ShopContextProvider=(props)=>{
     const [cartItem, setCartItem] = useState(getDefaultCart());
 
+
+    //function takes in the id of product added to cart, it then uses the cart mapping
+    //of all the products finds its placement by its id and increases it to one
     const addToCart = (itemId) =>{
         setCartItem((prev)=>({...prev, [itemId]: prev[itemId] + 1}))
     }
     const removeFromCart = (itemId) =>{
         setCartItem((prev)=>({...prev, [itemId]: prev[itemId] - 1}))
     }
+
     const updateCartItemCount = (newAmount, itemId) => {
         setCartItem((prev)=>({...prev, [itemId]: newAmount}))
     }
@@ -35,8 +42,11 @@ export const ShopContextProvider=(props)=>{
         }
         return totalAmount;
     }
+    //these are the functions provided to all child components
     const contextValue = {cartItem, addToCart, removeFromCart, updateCartItemCount, getTotalCartAmount}
     return(
+        //this uses composotion to pass its functions and data to all child components using contextValue
+        //within app anything wrapped inside this container will have access to its functions
         <ShopContext.Provider value={contextValue}>
             {props.children}
         </ShopContext.Provider>

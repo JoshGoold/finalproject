@@ -7,9 +7,26 @@ import { useNavigate } from "react-router-dom"
 export const Cart =()=>{
 
     const nav = useNavigate()
+    const [username, setUsername] = useState("")
+    
+    useEffect(() => {
+        // Fetch the username from the server
+        axios.get("/api")
+            .then(response => {
+                if (response.data.valid) {
+                    setUsername(response.data.username)
+                } else {
+                    //if not logged into any account automatically redirects you to login
+                    nav("/login");
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching username:', error);
+            });
+    }, []);
 
-    const handleHome=()=>{
-        nav('/home')
+    const handleHome = () => {
+        nav(`/home/${username}`)
     }
 
     const {cartItem, getTotalCartAmount} = useContext(ShopContext)

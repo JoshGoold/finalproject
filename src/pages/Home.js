@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Logo from '../assets/logo.png'
 import Trend from "./Trend";
@@ -12,7 +12,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import Default from '../assets/default.webp';
 import AboutUs from "./AboutUs.js";
 import Contact from "./Contact.js";
-import CS from './cS.js'
+import CS from "../CS.js";
 import { FaHome } from "react-icons/fa";
 import { FaTshirt } from "react-icons/fa";
 import { GiShirt } from "react-icons/gi";
@@ -29,9 +29,9 @@ function Home(){
     const [username, setUsername] = useState("")
     const nav = useNavigate()
 
+    const {user} = useParams();
 
-
-    const handleSidePanel = () =>{
+    const handleSidePanel = () => {
         setShowSidePanel(false)
         if(showSidePanel === false){
             setShowSidePanel(true)
@@ -51,18 +51,18 @@ function Home(){
         }
     }
     axios.defaults.withCredentials = true;
-    const handleLogout=()=>{
-        axios.post("http://localhost:4100/logout")
-        .then( res => {
-            if(res.data.Message === "Success"){
-                nav("/login");
-            }
-            
-        }).catch(err => console.log(err))
+    const handleLogout = () => {
+        axios.post("/api/logout")
+            .then(res => {
+                if (res.data.Message === "Success") {
+                    nav("/login");
+                }
+
+            }).catch(err => console.log(err))
     }
     useEffect(() => {
         // Fetch the username from the server
-        axios.get('http://localhost:4100')
+        axios.get("/api")
             .then(response => {
                 if(response.data.valid){
                     setUsername(response.data.username)
@@ -203,7 +203,7 @@ function Home(){
         <div className="page-body">
           <div className="head fadeIn slideInLeft">
            
-            <h1> {!showSidePanel && (<button className="show" onClick={handleSidePanel}>≣</button>)} <img src={Default} height="50px" width="50px"  alt=""></img> {username}</h1>
+            <h1> {!showSidePanel && (<button className="show" onClick={handleSidePanel}>≣</button>)} <img src={Default} height="50px" width="50px"  alt=""></img> {user}</h1>
             <ul>
                 <li className={light ? 'lm' : 'dm'} onClick={handleAboutUs}>About Us</li> 
                 <li>Services</li>

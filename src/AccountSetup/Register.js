@@ -47,7 +47,7 @@ function Register(){
         } else if (password.length > 10){
             alert("Password must be 10 or less characters")
         } else {
-            Axios.post("http://localhost:4100/register", {
+            Axios.post("/api/register", {
                 username: username,
                 email: email,
                 password: password,
