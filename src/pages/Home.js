@@ -1,11 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Logo from '../assets/logo.png'
 import Trend from "./Trend";
 import Shirts from "./Shirt";
 import Sweaters from "./Sweater";
-import Footer from "./Footer.js";
 import Footer from "./Footer.js";
 import Pants from "./Pants";
 import Shoes from "./Shoes";
@@ -186,9 +184,11 @@ function Home() {
     }
     const handleMouseOver=()=>{
         setFullView(true);
+        setPanelWidth("200px")
     }
     const handleMouseOut=()=>{
         setFullView(false)
+        setPanelWidth("100px")
     }
     
    const [fullview, setFullView] = useState(false);
@@ -196,7 +196,7 @@ function Home() {
     return (
         <div className="page">
             {showSidePanel && ( 
-            <div onMouseOut={handleMouseOut} onMouseOver={handleMouseOver} className="side-panel slideInLeft">
+            <div style={{width: panelWidth}} onMouseOut={handleMouseOut} onMouseOver={handleMouseOver} className="side-panel slideInLeft">
             <img className={light ? 'lm' : 'dm'} src={Logo}></img>
             <button className={light ? 'lm' : 'dm'} onClick={handleHome}><FaHome/>&nbsp;{fullview ? 'Home' : ''}</button>
             <button className={light ? 'lm' : 'dm'} onClick={handleShirts}><FaTshirt/>&nbsp;{fullview ? 'Shirts' : ''}</button>

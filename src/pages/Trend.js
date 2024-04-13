@@ -62,10 +62,8 @@ function Trend(){
                 <div className="sweaterProducts">
                     {PRODUCTS.slice(17, 20).map((product, index)=>(
                         <Product key={index} data={product}/>
-                    {PRODUCTS.slice(17, 20).map((product, index)=>(
-                        <Product key={index} data={product}/>
                     ))}
-                    <img height="375px" src={Logo}></img>
+                    <img style={{height: "375px"}} src={Logo}></img>
                 </div>
                 {slide && (
                     <div>
