@@ -26,7 +26,7 @@ function Register(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [registerStatus, setRegisterStatus] = useState("");
-
+    const backendUrl = `http://${process.env.BACKEND_SERVICE}:${process.env.BACKEND_PORT}`
     //stores user input
     const handleUsername = (e) => {
         setUsername(e.target.value);

@@ -1,9 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Logo from '../assets/logo.png'
 import Trend from "./Trend";
 import Shirts from "./Shirt";
 import Sweaters from "./Sweater";
+import Footer from "./Footer.js";
 import Footer from "./Footer.js";
 import Pants from "./Pants";
 import Shoes from "./Shoes";
@@ -22,29 +24,30 @@ import { RiCustomerService2Fill } from "react-icons/ri";
 import { IoInvertMode } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 
-function Home(){
+function Home() {
     const [showSidePanel, setShowSidePanel] = useState(true);
     const [light, setLight] = useState(false);
     const [modeText, setModeText] = useState("Light Mode")
     const [username, setUsername] = useState("")
+    const [panelWidth, setPanelWidth] = useState('100px');
     const nav = useNavigate()
 
     const {user} = useParams();
 
     const handleSidePanel = () => {
         setShowSidePanel(false)
-        if(showSidePanel === false){
+        if (showSidePanel === false) {
             setShowSidePanel(true)
         }
     }
-    
+
     const element = document.getElementById("html")
 
-    const handleMode = ()=>{
+    const handleMode = () => {
         setLight(true)
         setModeText("Dark Mode")
         element.style.colorScheme = "light";
-        if(light === true){
+        if (light === true) {
             setLight(false)
             setModeText("Light Mode")
             element.style.colorScheme = "dark";
@@ -83,12 +86,13 @@ function Home(){
     const [shirt, setShirt] = useState(false)
     const [pant, setPant] = useState(false)
     const [shoe,setShoe] = useState(false)
-    const [cs, setCs] = useState(false)
+    
     const [aboutUs, setAboutUs] = useState(false)
     const [contact, setContact] = useState(false)
+    const [cs, setCs] = useState(false)
 
     //home navigation handling
-    const handleHome =()=>{
+    const handleHome = () => {
         setHome(true)
         setPant(false)
         setShirt(false)
@@ -98,7 +102,19 @@ function Home(){
         setAboutUs(false)
         setContact(false)
     }
-    const handleSweaters=()=>{
+    const handleCs = () => {
+        setHome(false)
+        setCs(true)
+        setPant(false)
+        setShirt(false)
+        setShoe(false)
+        setCs(false)
+        setSweater(false)
+        setAboutUs(false)
+        setContact(false)
+    }
+  
+    const handleSweaters = () => {
         setHome(false)
         setPant(false)
         setShirt(false)
@@ -106,50 +122,55 @@ function Home(){
         setShoe(false)
         setCs(false)
         setSweater(true)
+        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
-    const handleShirts=()=>{
+    const handleShirts = () => {
         setHome(false)
         setPant(false)
         setShirt(true)
         setCs(false)
         setShoe(false)
         setCs(false)
+        setCs(false)
         setSweater(false)
         setAboutUs(false)
         setContact(false)
     }
-    const handlePants=()=>{
+    const handlePants = () => {
         setHome(false)
         setPant(true)
         setShirt(false)
         setShoe(false)
         setCs(false)
         setSweater(false)
+        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
-    const handleShoes=()=>{
+    const handleShoes = () => {
         setHome(false)
         setPant(false)
         setShirt(false)
         setShoe(true)
         setSweater(false)
+        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
-    const handleAboutUs=()=>{
+    const handleAboutUs = () => {
         setHome(false)
         setPant(false)
         setShirt(false)
         setCs(false)
         setShoe(false)
+        setCs(false)
         setSweater(false)
         setAboutUs(true)
         setContact(false)
     }
-    const handleContact=()=>{
+    const handleContact = () => {
         setHome(false)
         setPant(false)
         setShirt(false)
@@ -157,17 +178,8 @@ function Home(){
         setCs(false)
         setSweater(false)
         setAboutUs(false)
+        setCs(false)
         setContact(true)
-    }
-    const handleCs=()=>{
-        setHome(false)
-        setPant(false)
-        setShirt(false)
-        setShoe(false)
-        setCs(true)
-        setSweater(false)
-        setAboutUs(false)
-        setContact(false)
     }
     const handleCart=()=>{
         nav("/cart")
@@ -181,7 +193,7 @@ function Home(){
     
    const [fullview, setFullView] = useState(false);
 
-    return(
+    return (
         <div className="page">
             {showSidePanel && ( 
             <div onMouseOut={handleMouseOut} onMouseOver={handleMouseOver} className="side-panel slideInLeft">
@@ -235,9 +247,11 @@ function Home(){
             <Contact/>
           )}
           {cs && (
-            <CS/>
-          )}
-          <Footer handleCs={handleCs}/>
+                    <CS hCU={handleContact} />
+                )}
+                <Footer handleCS={handleCs}
+                    handleAboutUs={handleAboutUs}
+                    handleContact={handleContact} />
           </div>
           
     </div>

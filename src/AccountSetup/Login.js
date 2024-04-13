@@ -13,12 +13,13 @@ function Login(){
 
     //redirects to login path
     const redirect = () =>{
-        nav("/home");
+        nav(`/home/${username}`);
     }
     //redirects to register
     const register = () =>{
         nav("/");
     }
+   
     //state variables used within component
     const [visible, setVisible] = useState(true);
     const [username, setUsername] = useState("");
@@ -58,6 +59,7 @@ function Login(){
     }
     //handles password modification
     const handleNewPassword = () =>{
+       
         if (email === "" || newPassword !== password){
             alert("Please provide a valid email and ensure passwords match.")
         } else {
@@ -98,7 +100,7 @@ function Login(){
         Axios.get("/api")
             .then(response => {
                 if(response.data.valid){
-                    nav("/home");
+                    nav(`/home/${username}`);
                 } else {
                     console.log("invalid")
                     nav("/login");
@@ -106,6 +108,7 @@ function Login(){
             })
             .catch(error => {
                 console.error('Error fetching username:', error);
+                console.log(process.env.REACT_APP_BACKEND_URL)
             });
     }, []);
 
