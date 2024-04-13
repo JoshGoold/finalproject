@@ -1,5 +1,4 @@
 import Logo from '../assets/logo.png'
-import Logo from '../assets/logo.png'
 import { IoIosContact } from "react-icons/io";
 import { MdOutlineRateReview } from "react-icons/md";
 import { IoIosInformationCircle } from "react-icons/io";
