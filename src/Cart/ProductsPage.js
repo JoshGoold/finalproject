@@ -1,9 +1,9 @@
-import { PRODUCTS } from "./Cart/Products";
+import { PRODUCTS } from "./Products";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import Footer from "./pages/Footer";
-import { ShopContext } from "./Cart/shop-context";
+import Footer from "../pages/Footer";
+import { ShopContext } from "./shop-context";
 import { CiShoppingCart } from "react-icons/ci";
 
 import { FaHome } from "react-icons/fa";
@@ -18,28 +18,28 @@ function ProductsPage() {
   const nav = useNavigate();
 
   const handleHome = () => {
-    nav(`/home/${username}`);
+    nav(`/home/user`);
   };
   const handleCart = () => {
     nav("/cart");
   };
 
-  useEffect(() => {
-    // Fetch the username from the server
-    axios
-      .get("/api")
-      .then((response) => {
-        if (response.data.valid) {
-          setUsername(response.data.username);
-        } else {
-          //if not logged into any account automatically redirects you to login
-          nav("/login");
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching username:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // Fetch the username from the server
+  //   axios
+  //     .get("/api")
+  //     .then((response) => {
+  //       if (response.data.valid) {
+  //         setUsername(response.data.username);
+  //       } else {
+  //         //if not logged into any account automatically redirects you to login
+  //         nav("/login");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching username:", error);
+  //     });
+  // }, []);
 
   return (
     <div className="page">

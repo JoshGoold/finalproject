@@ -12,7 +12,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import Default from '../assets/default.webp';
 import AboutUs from "./AboutUs.js";
 import Contact from "./Contact.js";
-import CS from "../CS.js";
+import CS from "./CS.js";
 import { FaHome } from "react-icons/fa";
 import { FaTshirt } from "react-icons/fa";
 import { GiShirt } from "react-icons/gi";
@@ -51,31 +51,31 @@ function Home() {
             element.style.colorScheme = "dark";
         }
     }
-    axios.defaults.withCredentials = true;
+    // axios.defaults.withCredentials = true;
     const handleLogout = () => {
-        axios.post("/api/logout")
-            .then(res => {
-                if (res.data.Message === "Success") {
-                    nav("/login");
-                }
+    //     axios.post("/api/logout")
+    //         .then(res => {
+    //             if (res.data.Message === "Success") {
+    //                 nav("/login");
+    //             }
 
-            }).catch(err => console.log(err))
+    //         }).catch(err => console.log(err))
     }
-    useEffect(() => {
-        // Fetch the username from the server
-        axios.get("/api")
-            .then(response => {
-                if(response.data.valid){
-                    setUsername(response.data.username)
-                } else {
-                    //if not logged into any account automatically redirects you to login
-                    nav("/login");
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching username:', error);
-            });
-    }, []);
+    // useEffect(() => {
+    //     // Fetch the username from the server
+    //     axios.get("/api")
+    //         .then(response => {
+    //             if(response.data.valid){
+    //                 setUsername(response.data.username)
+    //             } else {
+    //                 //if not logged into any account automatically redirects you to login
+    //                 nav("/login");
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching username:', error);
+    //         });
+    // }, []);
 
    
     //variables for naviagtion handling
@@ -106,7 +106,6 @@ function Home() {
         setPant(false)
         setShirt(false)
         setShoe(false)
-        setCs(false)
         setSweater(false)
         setAboutUs(false)
         setContact(false)
@@ -118,9 +117,7 @@ function Home() {
         setShirt(false)
         setCs(false)
         setShoe(false)
-        setCs(false)
         setSweater(true)
-        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
@@ -130,8 +127,6 @@ function Home() {
         setShirt(true)
         setCs(false)
         setShoe(false)
-        setCs(false)
-        setCs(false)
         setSweater(false)
         setAboutUs(false)
         setContact(false)
@@ -143,7 +138,6 @@ function Home() {
         setShoe(false)
         setCs(false)
         setSweater(false)
-        setCs(false)
         setAboutUs(false)
         setContact(false)
     }
@@ -163,7 +157,6 @@ function Home() {
         setShirt(false)
         setCs(false)
         setShoe(false)
-        setCs(false)
         setSweater(false)
         setAboutUs(true)
         setContact(false)
@@ -176,11 +169,10 @@ function Home() {
         setCs(false)
         setSweater(false)
         setAboutUs(false)
-        setCs(false)
         setContact(true)
     }
     const handleCart=()=>{
-        nav("/cart")
+        nav(`/cart/${user}`)
     }
     const handleMouseOver=()=>{
         setFullView(true);

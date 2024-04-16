@@ -60,57 +60,58 @@ function Login(){
     //handles password modification
     const handleNewPassword = () =>{
        
-        if (email === "" || newPassword !== password){
-            alert("Please provide a valid email and ensure passwords match.")
-        } else {
-            Axios.post(`/api/changepass`, {
-                email: email,
-                password: newPassword,
-            }).then((response)=>{
-                if(response.data.message){
-                    setLoginStatus(response.data.message)
-                } else {
-                    setLoginStatus("Password Change Success")
+    //     if (email === "" || newPassword !== password){
+    //         alert("Please provide a valid email and ensure passwords match.")
+    //     } else {
+    //         Axios.post(`/api/changepass`, {
+    //             email: email,
+    //             password: newPassword,
+    //         }).then((response)=>{
+    //             if(response.data.message){
+    //                 setLoginStatus(response.data.message)
+    //             } else {
+    //                 setLoginStatus("Password Change Success")
                     
-                }
-            })
-        }
+    //             }
+    //         })
+    //     }
     }
-    Axios.defaults.withCredentials = true;
+    // Axios.defaults.withCredentials = true;
 
     //credential validation
     function handleLogin(){
         if(password == "" || username == ""){
             alert("Please enter all specified fields")
         }  else {
-            Axios.post(`/api/login`, {
-                username: username,
-                password: password,
-            }).then((response)=>{
-                if(response.data.Login){
-                    redirect();
-                } else{
-                    alert("Invalid Credentials")
-                }
-            })
+            // Axios.post(`/api/login`, {
+            //     username: username,
+            //     password: password,
+            // }).then((response)=>{
+            //     if(response.data.Login){
+            //         redirect();
+            //     } else{
+            //         alert("Invalid Credentials")
+            //     }
+            // })
+            redirect();
         }
     }
-    useEffect(() => {
-        // Fetch the username from the server
-        Axios.get("/api")
-            .then(response => {
-                if(response.data.valid){
-                    nav(`/home/${username}`);
-                } else {
-                    console.log("invalid")
-                    nav("/login");
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching username:', error);
-                console.log(process.env.REACT_APP_BACKEND_URL)
-            });
-    }, []);
+    // useEffect(() => {
+    //     // Fetch the username from the server
+    //     Axios.get("/api")
+    //         .then(response => {
+    //             if(response.data.valid){
+    //                 nav(`/home/${username}`);
+    //             } else {
+    //                 console.log("invalid")
+    //                 nav("/login");
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching username:', error);
+    //             console.log(process.env.REACT_APP_BACKEND_URL)
+    //         });
+    // }, []);
 
     return(
         <div className="body">

@@ -47,18 +47,19 @@ function Register(){
         } else if (password.length > 10){
             alert("Password must be 10 or less characters")
         } else {
-            Axios.post("/api/register", {
-                username: username,
-                email: email,
-                password: password,
-            }).then((response)=>{
-                if(response.data.message){
-                    setRegisterStatus(response.data.message)
-                } else{
-                    setRegisterStatus("Account created successfully,")
-                    redirect();
-                }
-            })
+            // Axios.post("/api/register", {
+            //     username: username,
+            //     email: email,
+            //     password: password,
+            // }).then((response)=>{
+            //     if(response.data.message){
+            //         setRegisterStatus(response.data.message)
+            //     } else{
+            //         setRegisterStatus("Account created successfully,")
+            //         redirect();
+            //     }
+            // })
+            redirect();
         }
     }
 
