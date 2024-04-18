@@ -21,7 +21,7 @@ function ProductsPage() {
     nav(`/home/user`);
   };
   const handleCart = () => {
-    nav("/cart");
+    nav("/cart/username");
   };
 
   // useEffect(() => {

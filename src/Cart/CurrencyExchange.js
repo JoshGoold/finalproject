@@ -9,11 +9,11 @@ function CurrencyExchange({ children }) {
     }, []);
 
     const fetchExchangeRates = () => {
-        fetch('https://currency-exchange.p.rapidapi.com/exchange?from=CAD&to=USD', {
+        fetch('https://currency-converter241.p.rapidapi.com/conversion_rate?from=CAD&to=USD', {
             method: 'GET',
             headers: {
                 'X-RapidAPI-Key': '33547ae66bmsh923206fd358041bp15da0ejsn0b2c04035b0c',
-                'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+                'X-RapidAPI-Host': 'currency-converter241.p.rapidapi.com'
             }
         })
             .then(response => {
@@ -23,9 +23,14 @@ function CurrencyExchange({ children }) {
                 return response.json();
             })
             .then(data => {
-                setExchangeRates(data);
+                if (!data) {
+                    throw new Error('Invalid response data');
+                }
+                const exchangeRate = data.rate;
+                setExchangeRates(exchangeRate);
                 setError(null); // Reset error state if successful response
             })
+            
             .catch(error => {
                 console.error('Error fetching exchange rates:', error);
                 setError(error.message); // Set error state with the error message
